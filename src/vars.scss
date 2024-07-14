@@ -1,0 +1,19 @@
+@use "sass-rem" as *;
+
+:root {
+    --white: #FFFFFF;
+    --dark-blue: #001955;
+    --blue: #0088FF;
+    --green: #19E3B1;
+    --red: #FC636B;
+    --yellow: #FFD700;
+    --blue-pastel: #E6F4FF;
+    --green-pastel: #E6F6F1;
+    --red-pastel: #FFEFF0;
+    --yellow-pastel: #FFFBE6;
+    --light-blue: #BEE1FF;
+    --gray: #d7d7d7;
+    --dark-gray: #99a3bb;
+
+    --box-shadow: 0rem 0.3750rem 0.750rem rgb(0 0 0 / 16%);
+}

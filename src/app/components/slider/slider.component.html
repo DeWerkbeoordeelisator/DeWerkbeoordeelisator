@@ -1,0 +1,9 @@
+<div class="slider-container">
+    <input type="range" id="slider" [(ngModel)]="sliderValue" (input)="onInput($event)" min="0" [max]="maxValue">
+</div>
+
+<div class="slider-labels">
+    @for (item of sliderLabels; track item) {
+        <span>{{ reverse ? sliderLabels[sliderLabels.length - 1 - item] : item }}</span>
+    }
+</div>

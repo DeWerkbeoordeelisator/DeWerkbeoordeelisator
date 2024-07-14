@@ -1,0 +1,13 @@
+<div class="values">
+    <div class="value">
+        <h2>Hoe zuur ben je?</h2>
+        <app-slider [reverse]="true" [(ngModel)]="acidity"></app-slider>
+    </div>
+
+    <div class="value">
+        <h2>Wat is je gemoedstoestand?</h2>
+        <app-slider [(ngModel)]="feeling"></app-slider>
+    </div>
+
+    <button>Verzenden!</button>
+</div>
