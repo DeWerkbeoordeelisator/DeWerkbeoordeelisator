@@ -20,8 +20,8 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
 export class SliderComponent implements ControlValueAccessor {
     @Input() reverse: boolean = false;
 
-    onChange: any = () => {};
-    onTouched: any = () => {};
+    onChange: any = () => { };
+    onTouched: any = () => { };
 
     sliderValue: number = 0;
     maxValue: number = 10;
