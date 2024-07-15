@@ -10,5 +10,6 @@ export const environment = {
         appId: "1:918835579953:web:624a944336b5ac78e55910",
         measurementId: "G-3RM2SN6XM0",
         databaseURL: "https://werkbeoordeelisator-69-default-rtdb.europe-west1.firebasedatabase.app"
-    } as FirebaseOptions
+    } as FirebaseOptions,
+    rootFontSize: 18
 };

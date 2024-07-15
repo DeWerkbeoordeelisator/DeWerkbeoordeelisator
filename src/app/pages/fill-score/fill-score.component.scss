@@ -1,20 +1,11 @@
 @use "sass-rem" as *;
 :host {
+    padding: rem(32px);
+
     .values {
-        margin: auto;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         max-width: rem(512px);
         min-width: rem(256px);
-
-        h2 {
-            text-align: center;
-        }
-
-        .value {
-            padding: rem(16px);
-        }
+        width: 100%;
+        gap: rem(32px);
     }
 }

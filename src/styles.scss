@@ -2,15 +2,40 @@
 
 @import "vars";
 
+@font-face {
+    font-family: "Nunito";
+    font-weight: 300;
+    src: url("./assets/fonts/nunito-light.ttf");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-weight: normal;
+    src: url("./assets/fonts/nunito-regular.ttf");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-weight: 500;
+    src: url("./assets/fonts/nunito-medium.ttf");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-weight: bold;
+    src: url("./assets/fonts/nunito-bold.ttf");
+}
+
 html,
 body,
 .root,
 .app,
 .outlet ~ * {
-    display: block !important;
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
-    margin: 0px;
     background-color: var(--white);
     color: var(--dark-blue);
     font-size: rem(14px);
@@ -18,4 +43,73 @@ body,
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.vh-center {
+    flex: 1;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.red {
+    color: var(--red);
+}
+
+h1,
+.h1 {
+    font-size: rem(32px);
+}
+
+h2,
+.h2 {
+    font-size: rem(26px);
+}
+
+h3,
+.h3 {
+    font-size: rem(22px);
+}
+
+h4,
+.h4 {
+    font-size: rem(18px);
+}
+
+h5,
+.h5 {
+    font-size: rem(16px);
+}
+
+h6,
+.h6 {
+    font-size: rem(14px);
+}
+
+button,
+.button {
+    font-size: rem(14px);
+    padding: rem(16px 16px);
+    border-radius: rem(4px);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--light-blue);
+    }
 }

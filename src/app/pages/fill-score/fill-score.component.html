@@ -1,13 +1,24 @@
-<div class="values">
-    <div class="value">
-        <h2>Hoe zuur ben je?</h2>
-        <app-slider [reverse]="true" [(ngModel)]="acidity"></app-slider>
-    </div>
+<h4 class="email center">Je bent ingelogd als: {{ email }}</h4>
 
-    <div class="value">
-        <h2>Wat is je gemoedstoestand?</h2>
-        <app-slider [(ngModel)]="feeling"></app-slider>
-    </div>
+@if (!submitted) {
+    <div class="values vh-center">
+        <div class="value">
+            <h2 class="center">Hoe zuur ben je?</h2>
+            <app-slider [reverse]="true" [(ngModel)]="acidity"></app-slider>
+        </div>
 
-    <button (click)="sendValues()">Verzenden!</button>
-</div>
+        <div class="value">
+            <h2 class="center">Wat is je gemoedstoestand?</h2>
+            <app-slider [(ngModel)]="feeling"></app-slider>
+        </div>
+
+        <button (click)="sendValues()">Verzenden!</button>
+        @if (submitFailed) {
+            <h6 class="center red">Er is iets misgegaan met het verzenden van je waardes</h6>
+        }
+    </div>
+} @else if (submitted) {
+    <div class="submitted vh-center">
+        <h1>Je waardes zijn verzonden!</h1>
+    </div>
+}

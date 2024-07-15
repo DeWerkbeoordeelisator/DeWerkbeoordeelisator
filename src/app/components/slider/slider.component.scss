@@ -1,6 +1,11 @@
 @use "sass-rem" as *;
-input {
-    width: 100%;
+
+.slider-container {
+    padding: rem(8px);
+
+    input {
+        width: 100%;
+    }
 }
 
 .slider-labels {
