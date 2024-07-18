@@ -33,7 +33,7 @@ export class CountdownPipe implements PipeTransform, OnDestroy {
             const timeLeft = this.calculateTimeLeft(difference);
             this.timeLeftMessage = this.formatTimeLeft(timeLeft);
         } else {
-            this.timeLeftMessage = 'Tijd is verstreken';
+            this.timeLeftMessage = 'Refresh de pagina om een nieuwe score in te vullen!';
             clearInterval(this.countdownInterval);
         }
     }
@@ -61,7 +61,7 @@ export class CountdownPipe implements PipeTransform, OnDestroy {
             parts.push(`${timeLeft.seconds} second${timeLeft.seconds !== 1 ? 'en' : ''}`);
         }
 
-        return parts.join(', ');
+        return `Dat is al over ${parts.join(', ')}`;
     }
 
     ngOnDestroy(): void {
