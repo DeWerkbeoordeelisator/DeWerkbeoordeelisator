@@ -1,0 +1,18 @@
+@use "sass-rem" as *;
+:host {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: rem(32px);
+        max-width: rem(512px);
+        min-width: rem(256px);
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+        padding: rem(8px);
+        border-radius: rem(4px);
+        border: rem(1px) solid var(--dark-blue);
+    }
+}

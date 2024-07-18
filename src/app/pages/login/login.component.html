@@ -1,6 +1,6 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form class="vh-center" [formGroup]="loginForm" (ngSubmit)="login()">
     <div>
-        <label for="email">Email:</label>
+        <label class="h2 bold d-flex" for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
         @if (email?.invalid && (email?.dirty || email?.touched)) {
             @if (email?.errors?.['required']) {
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-        <label for="password">Password:</label>
+        <label class="h2 bold d-flex" for="password">Password:</label>
         <input id="password" formControlName="password" type="password" />
         @if (password?.invalid && (password?.dirty || password?.touched)) {
             @if (password?.errors?.['required']) {

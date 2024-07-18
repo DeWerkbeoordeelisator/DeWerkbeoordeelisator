@@ -8,6 +8,7 @@ import { TimeProvider } from '../../../providers/time.provider';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { PopperDirective } from '../../directives/popper-directive';
 import { DatePipe } from '@angular/common';
+import { CountdownPipe } from '../../pipes/countdown.pipe';
 
 @Component({
     selector: 'app-fill-score',
@@ -17,7 +18,8 @@ import { DatePipe } from '@angular/common';
         FormsModule,
         SvgIconComponent,
         PopperDirective,
-        DatePipe
+        DatePipe,
+        CountdownPipe
     ],
     templateUrl: './fill-score.component.html',
     styleUrl: './fill-score.component.scss'
