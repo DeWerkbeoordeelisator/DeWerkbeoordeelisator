@@ -8,7 +8,7 @@
     <div class="vh-center">
         <h1 class="center">{{ canPerformAction === null ? 'Het is buiten werkuren, je kunt geen waardes invullen' : 'Je hebt al waardes ingevuld voor dit dagdeel' }}</h1>
         <h3 class="center">Je kan weer een score invullen op {{ nextAvailableTime | date: 'HH:mm' }}</h3>
-        <h5 class="center">{{ nextAvailableTime | countdown }}!</h5>
+        <h5 class="center">{{ nextAvailableTime | countdown }}</h5>
     </div>
 } @else if (!submitted) {
     <div class="values vh-center">
