@@ -15,6 +15,7 @@ import { BaseChartDirective } from 'ng2-charts';
     styleUrl: './line-chart.component.scss'
 })
 export class LineChartComponent implements OnChanges {
+    // https://www.chartjs.org/docs/latest/charts/line.html
     @Input() data: ChartDataset<"line", number[]>[] = [];
 
     constructor(
@@ -24,6 +25,7 @@ export class LineChartComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         const data = changes["data"];
 
+        console.log("LineChartComponent - Chart data:", data);
         if (data) {
             this.lineChartData = {
                 datasets: structuredClone(data.currentValue),
@@ -43,7 +45,9 @@ export class LineChartComponent implements OnChanges {
             y: {
                 ticks: {
                     stepSize: 1
-                }
+                },
+                min: 0,
+                max: 10
             }
         }
     };
