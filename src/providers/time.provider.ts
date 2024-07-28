@@ -87,4 +87,8 @@ export class TimeProvider {
     startOfDay(): number {
         return moment.tz('GMT').startOf('day').unix() * 1000;
     }
+
+    startOfDateString(dateString: string): number {
+        return moment.tz(dateString, 'DD-MM-YYYY', 'GMT').startOf('day').unix() * 1000;
+    }
 }
