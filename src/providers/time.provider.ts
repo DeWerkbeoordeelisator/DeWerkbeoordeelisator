@@ -85,6 +85,6 @@ export class TimeProvider {
     }
 
     startOfDay(): number {
-        return moment().startOf('day').unix();
+        return moment().startOf('day').unix() * 1000;
     }
 }
