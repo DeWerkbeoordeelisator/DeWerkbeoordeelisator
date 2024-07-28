@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { first, firstValueFrom } from 'rxjs';
-import { ETable } from '../app/enums/table.enum';
 import { IData } from '../app/interfaces/data.interface';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FireBaseProvider {
 
-    get user() {
+    get user(): any {
         const user = this.fbAuth.user.pipe(first()).toPromise();
         return user;
     }
@@ -28,9 +27,9 @@ export class FireBaseProvider {
         console.log("Login result:", result);
     }
 
-    async addData(table: ETable, data: any) {
+    async addData(path: string, data: any) {
         console.log("Adding data...");
-        const result = await this.fbDb.list(table).push(data);
+        const result = await this.fbDb.list(path).push(data);
         console.log("Added data:", result);
     }
 

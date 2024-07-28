@@ -3,12 +3,12 @@ import { SliderComponent } from '../../components/slider/slider.component';
 import { FormsModule } from '@angular/forms';
 import { FireBaseProvider } from '../../../providers/firebase.provider';
 import { ConfettiProvider } from '../../../providers/confetti.provider';
-import { ETable } from '../../enums/table.enum';
 import { TimeProvider } from '../../../providers/time.provider';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { PopperDirective } from '../../directives/popper-directive';
 import { DatePipe } from '@angular/common';
 import { CountdownPipe } from '../../pipes/countdown.pipe';
+import { EFbPath } from "../../enums/fbpath.enum";
 
 @Component({
     selector: 'app-fill-score',
@@ -51,7 +51,7 @@ export class FillScoreComponent implements OnInit {
     async checkValues() {
         try {
             this.loading = 'We checken of je al een beoordeling hebt ingevuld...';
-            const data = await this.fireBaseProvider.getRecentValue(ETable.WERKBEOORDELING, this.email);
+            const data = await this.fireBaseProvider.getRecentValue(`${EFbPath.WERKBEOORDELING}/${this.timeProvider.startOfDay()}`, this.email);
             this.canPerformAction = this.timeProvider.canPerformAction(data?.timestamp);
         } catch (error) {
             console.error(error);
@@ -68,7 +68,7 @@ export class FillScoreComponent implements OnInit {
                 timestamp: new Date().getTime(),
                 email: this.email
             }
-            await this.fireBaseProvider.addData(ETable.WERKBEOORDELING, data);
+            await this.fireBaseProvider.addData(`${EFbPath.WERKBEOORDELING}/${this.timeProvider.startOfDay()}`, data);
 
             this.confettiProvider.shoot();
 
