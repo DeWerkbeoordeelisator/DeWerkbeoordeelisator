@@ -1,3 +1,3 @@
-export enum EFbPath {
+export enum ETable {
     WERKBEOORDELING = 'werkbeoordeling',
 }

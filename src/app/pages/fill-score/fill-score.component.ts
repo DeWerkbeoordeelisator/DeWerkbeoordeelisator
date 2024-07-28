@@ -6,9 +6,8 @@ import { ConfettiProvider } from '../../../providers/confetti.provider';
 import { TimeProvider } from '../../../providers/time.provider';
 import { DatePipe } from '@angular/common';
 import { CountdownPipe } from '../../pipes/countdown.pipe';
-import { EFbPath } from "../../enums/fbpath.enum";
 import { HeaderComponent } from '../../components/header/header.component';
-import moment from "moment-timezone";
+import { ETable } from '../../enums/fbpath.enum';
 
 @Component({
     selector: 'app-fill-score',
@@ -45,20 +44,12 @@ export class FillScoreComponent implements OnInit {
         this.email = (await this.fireBaseProvider.user)?.email ?? '';
         this.nextAvailableTime = this.timeProvider.nextAvailableTime;
         await this.checkValues();
-
-        const startDate = "01-07-2024";
-        const endDate = "31-07-2024";
-        const data = await this.fireBaseProvider.getDataOnDate(
-            EFbPath.WERKBEOORDELING,
-            this.timeProvider.startOfDateString(startDate), 
-            this.timeProvider.startOfDateString(endDate)
-        );
     }
 
     async checkValues() {
         try {
             this.loading = 'We checken of je al een beoordeling hebt ingevuld...';
-            const data = await this.fireBaseProvider.getRecentValue(EFbPath.WERKBEOORDELING, this.email);
+            const data = await this.fireBaseProvider.getRecentValue(ETable.WERKBEOORDELING, this.email);
             this.canPerformAction = this.timeProvider.canPerformAction(data?.timestamp);
         } catch (error) {
             console.error(error);
@@ -75,7 +66,7 @@ export class FillScoreComponent implements OnInit {
                 timestamp: new Date().getTime(),
                 email: this.email
             }
-            await this.fireBaseProvider.addData(EFbPath.WERKBEOORDELING, data);
+            await this.fireBaseProvider.addData(ETable.WERKBEOORDELING, data);
 
             this.confettiProvider.shoot();
 

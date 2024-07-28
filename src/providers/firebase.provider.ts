@@ -5,6 +5,7 @@ import { first, firstValueFrom } from 'rxjs';
 import { IData } from '../app/interfaces/data.interface';
 import { Router } from '@angular/router';
 import { TimeProvider } from "./time.provider";
+import { ETable } from '../app/enums/fbpath.enum';
 
 @Injectable({
     providedIn: 'root'
@@ -35,20 +36,20 @@ export class FireBaseProvider {
         console.log("Added data:", result);
     }
 
-    async getData(path: string): Promise<any> {
+    async getData(path: ETable): Promise<any> {
         return await firstValueFrom(this.fbDb.list<IData>(path, ref =>
             ref
         ).valueChanges());
     }
 
-    async getDataOnDate(path: string, unix1: number, unix2: number) {
-        return await firstValueFrom(this.fbDb.list<IData[]>(path, ref =>
+    async getDataOnDate(path: ETable, unix1: number, unix2: number): Promise<IData[]> {
+        return await firstValueFrom(this.fbDb.list<IData>(path, ref =>
             ref.orderByChild("timestamp").startAt(unix1).endAt(unix2)
         ).valueChanges());
     }
 
-    async getRecentValue(table: string, email: string): Promise<IData | null> {
-        const query = this.fbDb.list<IData>(table, ref =>
+    async getRecentValue(path: ETable, email: string): Promise<IData> {
+        const query = this.fbDb.list<IData>(path, ref =>
             ref.orderByChild('email')
                 .equalTo(email)
                 .limitToLast(1)
