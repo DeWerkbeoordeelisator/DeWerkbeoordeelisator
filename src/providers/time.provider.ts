@@ -85,6 +85,6 @@ export class TimeProvider {
     }
 
     startOfDay(): number {
-        return moment.tz('Europe/Amsterdam').startOf('day').unix() * 1000;
+        return moment.tz('GMT').startOf('day').unix() * 1000;
     }
 }
