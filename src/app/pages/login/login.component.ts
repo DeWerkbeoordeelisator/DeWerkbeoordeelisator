@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FireBaseProvider } from '../../../providers/firebase.provider';
 import { Router } from '@angular/router';
+import { emailDomainValidator } from "../../validators/custom-email-domain.validator";
 
 @Component({
     selector: 'app-login',
@@ -14,11 +15,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
     loginForm: FormGroup = new FormGroup({
-        email: new FormControl<string>('', [Validators.required, Validators.email]),
+        email: new FormControl<string>('', [Validators.required, Validators.email, emailDomainValidator('werkbeoordeelisator.nl')]),
         password: new FormControl<string>('', [Validators.required])
     });
-    loginFailed: boolean = false; // TODO: Implement error message
-    loading: boolean = false;     // TODO: Implement loading spinner
+    loginFailed = false;
+    loading = false;     // TODO: Implement loading spinner
     submitted = false;
 
     get email() {
@@ -35,7 +36,6 @@ export class LoginComponent {
     ) { }
 
     async login(): Promise<void> {
-        console.log("login:");
         try {
             this.loading = true;
             this.submitted = true;

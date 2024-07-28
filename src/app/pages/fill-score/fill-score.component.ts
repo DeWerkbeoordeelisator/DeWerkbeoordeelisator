@@ -53,7 +53,6 @@ export class FillScoreComponent implements OnInit {
             this.timeProvider.startOfDateString(startDate), 
             this.timeProvider.startOfDateString(endDate)
         );
-        console.log("data:", data);
     }
 
     async checkValues() {
