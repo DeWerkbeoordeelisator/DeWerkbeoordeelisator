@@ -1,1 +1,15 @@
-<h4 (click)="logout()" [popper]="'Uitloggen?'" popperClasses="red" red class="email center">Je bent ingelogd als: {{ email }} <svg-icon [applyClass]="true" src="assets/svg/logout.svg" class="svg"></svg-icon></h4>
+<h4 red class="email center">
+    <div (click)="logout()" class="logout-div" [popper]="'Uitloggen?'" popperClasses="red">
+        <p class="loggin-in-as-text">Je bent ingelogd als: {{ email }}</p> 
+        <svg-icon [applyClass]="true" src="assets/svg/logout.svg" class="svg"></svg-icon>
+    </div>
+
+    <div class="right-icon-div">
+        @if (currentUrl === '/fill-score') {
+            <svg-icon [popper]="'Score overzicht'" popperClasses="blue" [applyClass]="true" src="assets/svg/graph.svg" class="svg" (click)="navigateTo('score-overview')"></svg-icon>
+        }
+        @if (currentUrl === '/score-overview') {
+            <svg-icon [popper]="'Sluiten'" popperClasses="blue" [applyClass]="true" src="assets/svg/close.svg" class="svg" (click)="navigateTo('fill-score')"></svg-icon>
+        }
+    </div>
+</h4>
