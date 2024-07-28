@@ -24,20 +24,6 @@ export class LineChartComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         const data = changes["data"];
 
-        const chartdata = [
-            {
-                data: [1, 2, 3],
-                label: 'Blijheid'
-            },
-            {
-                data: [0, 0, 0],
-                label: 'Zuurtegraad'
-            }
-        ];
-
-        console.log("Data: ", structuredClone(data.currentValue));
-        console.log("Chartdata: ", structuredClone(chartdata));
-
         if (data) {
             this.lineChartData = {
                 datasets: structuredClone(data.currentValue),
@@ -53,7 +39,6 @@ export class LineChartComponent implements OnChanges {
         xLabels: this.timeProvider.timeSlots
     };
     lineChartOptions: ChartOptions = {
-        responsive: true,
         scales: {
             y: {
                 ticks: {
