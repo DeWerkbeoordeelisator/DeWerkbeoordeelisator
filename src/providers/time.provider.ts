@@ -88,11 +88,18 @@ export class TimeProvider {
         return true;
     }
 
-    startOfDay(): number {
-        return moment.tz('GMT').startOf('day').unix() * 1000;
+    getTimeSlot(date: Date): string {
+        const hour = date.getHours() * 100 + date.getMinutes(); // Convert to HHMM format
+        const timeslot = this.TIMESLOTS.find(([start, end]) => start <= hour && hour < end);
+        return timeslot ? `${timeslot[0].toString().padStart(4, '0')} - ${timeslot[1].toString().padStart(4, '0')}` : '';
     }
 
-    startOfDateString(dateString: string): number {
-        return moment.tz(dateString, 'DD-MM-YYYY', 'GMT').startOf('day').unix() * 1000;
+    getTimeSlotIndex(date: Date): number {
+        const hour = date.getHours() * 100 + date.getMinutes(); // Convert to HHMM format
+        return this.TIMESLOTS.findIndex(([start, end]) => start <= hour && hour < end);
+    }
+
+    startOfDateUnix(date: Date): number {
+        return moment.tz(date, 'GMT').startOf('day').unix() * 1000;
     }
 }
