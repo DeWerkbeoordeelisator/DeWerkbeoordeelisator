@@ -15,4 +15,28 @@
         border-radius: rem(4px);
         border: rem(1px) solid var(--dark-blue);
     }
+
+    .login-button {
+        background-color: rgb(1, 111, 215);
+        color: white;
+
+        &:disabled {
+            color: black;
+            background-color: rgb(236, 236, 236);
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    .login-failed {
+        background-color: red;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        padding: 16px;
+        border-radius: 8px;
+        color: white;
+    }
 }

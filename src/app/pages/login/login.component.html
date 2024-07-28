@@ -2,7 +2,7 @@
     <div>
         <label class="h2 bold d-flex" for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
-        @if (email?.invalid && (email?.dirty || email?.touched)) {
+        @if (submitted && email?.invalid && (email?.dirty || email?.touched)) {
             @if (email?.errors?.['required']) {
                 <small>Email is verplicht</small>
             }
@@ -13,14 +13,20 @@
     </div>
 
     <div>
-        <label class="h2 bold d-flex" for="password">Password:</label>
+        <label class="h2 bold d-flex" for="password">Wachtwoord:</label>
         <input id="password" formControlName="password" type="password" />
-        @if (password?.invalid && (password?.dirty || password?.touched)) {
+        @if (submitted && password?.invalid && (password?.dirty || password?.touched)) {
             @if (password?.errors?.['required']) {
                 <small>Wachtwoord is verplicht</small>
             }
         }
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" [disabled]="loginForm.invalid" class="login-button">Inloggen</button>
+    
+    @if (loginFailed) {
+        <div class="login-failed">
+            Logingegevens niet correct
+        </div>
+    }
 </form>

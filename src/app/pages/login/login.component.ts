@@ -19,6 +19,7 @@ export class LoginComponent {
     });
     loginFailed: boolean = false; // TODO: Implement error message
     loading: boolean = false;     // TODO: Implement loading spinner
+    submitted = false;
 
     get email() {
         return this.loginForm.get('email');
@@ -34,8 +35,11 @@ export class LoginComponent {
     ) { }
 
     async login(): Promise<void> {
+        console.log("login:");
         try {
             this.loading = true;
+            this.submitted = true;
+            this.loginFailed = false;
             await this.fireBaseProvider.login(this.email?.value, this.password?.value);
             await this.router.navigate(['/fill-score']);
         } catch (error) {
