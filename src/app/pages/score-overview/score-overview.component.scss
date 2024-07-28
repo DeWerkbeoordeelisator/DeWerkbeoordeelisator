@@ -1,4 +1,10 @@
 @use "sass-rem" as *;
 :host {
     padding: rem(32px);
+
+    .chart {
+        width: 100%;
+        max-width: 80%;
+        margin: auto;
+    }
 }
