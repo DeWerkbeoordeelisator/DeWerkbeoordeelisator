@@ -46,9 +46,6 @@ export class FillScoreComponent implements OnInit {
         this.nextAvailableTime = this.timeProvider.nextAvailableTime;
         await this.checkValues();
 
-        // const result = await this.fireBaseProvider.getData(`${EFbPath.WERKBEOORDELING}}`);
-        // console.log("result:", result);
-
         const startDate = "01-07-2024";
         const endDate = "31-07-2024";
         const data = await this.fireBaseProvider.getDataOnDate(
