@@ -53,11 +53,7 @@ export class FillScoreComponent implements OnInit {
             const data = await this.fireBaseProvider.getRecentValue(ETable.WERKBEOORDELING, this.email);
             this.canPerformAction = this.timeProvider.canPerformAction(data?.timestamp);
 
-            this.lastSavedKey = data.key;
-
-            // if (data) {
-            //     await this.fireBaseProvider.deleteData(`${ETable.WERKBEOORDELING}/${data.key}`);
-            // }
+            this.lastSavedKey = data?.key;
         } catch (error) {
             console.error(error);
         }
@@ -83,5 +79,14 @@ export class FillScoreComponent implements OnInit {
             this.submitFailed = true;
         }
         this.loading = '';
+    }
+
+    async deleteRecentValue() {
+        try {
+            await this.fireBaseProvider.deleteData(`${ETable.WERKBEOORDELING}/${this.lastSavedKey}`);
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

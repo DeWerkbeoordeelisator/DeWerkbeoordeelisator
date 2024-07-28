@@ -5,10 +5,11 @@
         <h1>{{ loading }}</h1>
     </div>
 } @else if (!canPerformAction) {
-    <div class="vh-center">
+    <div class="vh-center no-action">
         <h1 class="center">{{ canPerformAction === null ? 'Het is buiten werkuren, je kunt geen waardes invullen' : 'Je hebt al waardes ingevuld voor dit dagdeel' }}</h1>
         <h3 class="center">Je kan weer een score invullen op {{ nextAvailableTime | date: 'HH:mm' }}</h3>
         <h5 class="center">{{ nextAvailableTime | countdown }}</h5>
+        <button (click)="deleteRecentValue()">Delete je waarde</button>  <!-- TODO: Remove this button -->
     </div>
 } @else if (!submitted) {
     <div class="values vh-center">
