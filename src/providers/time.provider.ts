@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import moment from "moment";
+import moment from "moment-timezone";
 
 @Injectable({
     providedIn: 'root'
@@ -85,6 +85,6 @@ export class TimeProvider {
     }
 
     startOfDay(): number {
-        return moment().startOf('day').unix() * 1000;
+        return moment.tz('Europe/Amsterdam').startOf('day').unix() * 1000;
     }
 }

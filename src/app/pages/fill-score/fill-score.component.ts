@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { FireBaseProvider } from '../../../providers/firebase.provider';
 import { ConfettiProvider } from '../../../providers/confetti.provider';
 import { TimeProvider } from '../../../providers/time.provider';
-import { SvgIconComponent } from 'angular-svg-icon';
-import { PopperDirective } from '../../directives/popper-directive';
 import { DatePipe } from '@angular/common';
 import { CountdownPipe } from '../../pipes/countdown.pipe';
 import { EFbPath } from "../../enums/fbpath.enum";
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
     selector: 'app-fill-score',
@@ -16,10 +15,9 @@ import { EFbPath } from "../../enums/fbpath.enum";
     imports: [
         SliderComponent,
         FormsModule,
-        SvgIconComponent,
-        PopperDirective,
         DatePipe,
-        CountdownPipe
+        CountdownPipe,
+        HeaderComponent
     ],
     templateUrl: './fill-score.component.html',
     styleUrl: './fill-score.component.scss'
@@ -78,9 +76,5 @@ export class FillScoreComponent implements OnInit {
             this.submitFailed = true;
         }
         this.loading = '';
-    }
-
-    async logout() {
-        await this.fireBaseProvider.logout();
     }
 }

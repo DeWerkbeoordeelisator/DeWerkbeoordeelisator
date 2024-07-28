@@ -5,6 +5,7 @@ import { environment } from "../environments/environment";
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { HttpClientModule } from '@angular/common/http';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -14,6 +15,6 @@ export const appConfig: ApplicationConfig = {
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularSvgIconModule.forRoot(),
             HttpClientModule
-        )
+        ), provideCharts(withDefaultRegisterables())
     ]
 };
