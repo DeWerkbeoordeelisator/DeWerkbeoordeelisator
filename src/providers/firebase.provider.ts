@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { first, firstValueFrom } from 'rxjs';
+import { first, firstValueFrom, map } from 'rxjs';
 import { IData } from '../app/interfaces/data.interface';
 import { Router } from '@angular/router';
 import { TimeProvider } from "./time.provider";
@@ -50,13 +50,23 @@ export class FireBaseProvider {
 
     async getRecentValue(path: ETable, email: string): Promise<IData> {
         const query = this.fbDb.list<IData>(path, ref =>
-            ref.orderByChild('email')
-                .equalTo(email)
-                .limitToLast(1)
-        ).valueChanges();
-
+          ref.orderByChild('email')
+            .equalTo(email)
+            .limitToLast(1)
+        ).snapshotChanges().pipe(
+          map(actions => actions.map(a => ({
+            key: a.payload.key,
+            ...a.payload.val() as IData
+          })))
+        );
+    
         const data = await firstValueFrom(query);
+        console.log("data:", data);
         return data.length > 0 ? data[0] : null;
+      }
+
+    async deleteData(itemPath: string): Promise<any> {
+        await this.fbDb.object(itemPath).remove();
     }
 
     async logout() {

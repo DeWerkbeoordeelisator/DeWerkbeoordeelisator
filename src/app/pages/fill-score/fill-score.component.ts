@@ -33,6 +33,7 @@ export class FillScoreComponent implements OnInit {
 
     nextAvailableTime: Date = new Date();
     email: string = '';
+    lastSavedKey = null;
 
     constructor(
         private fireBaseProvider: FireBaseProvider,
@@ -51,6 +52,12 @@ export class FillScoreComponent implements OnInit {
             this.loading = 'We checken of je al een beoordeling hebt ingevuld...';
             const data = await this.fireBaseProvider.getRecentValue(ETable.WERKBEOORDELING, this.email);
             this.canPerformAction = this.timeProvider.canPerformAction(data?.timestamp);
+
+            this.lastSavedKey = data.key;
+
+            // if (data) {
+            //     await this.fireBaseProvider.deleteData(`${ETable.WERKBEOORDELING}/${data.key}`);
+            // }
         } catch (error) {
             console.error(error);
         }

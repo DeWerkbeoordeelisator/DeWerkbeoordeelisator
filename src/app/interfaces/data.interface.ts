@@ -3,4 +3,5 @@ export interface IData {
     feeling: number;
     timestamp: number;
     email: string;
+    key?: string;
 }
