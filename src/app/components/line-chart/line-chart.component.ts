@@ -49,6 +49,7 @@ export class LineChartComponent implements OnChanges {
                 min: 0,
                 max: 10
             }
-        }
+        },
+        responsive: true
     };
 }
