@@ -8,22 +8,4 @@
         width: 100%;
         gap: rem(32px);
     }
-
-    .email {
-        display: flex;
-        gap: rem(16px);
-        cursor: pointer;
-
-        .svg {
-            height: 100%;
-
-            svg {
-                width: rem(16px);
-            }
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
 }
