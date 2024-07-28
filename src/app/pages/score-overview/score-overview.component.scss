@@ -10,10 +10,15 @@
 
     @media (orientation: portrait) {
         .chart {
+            aspect-ratio: auto 1254 / 627; // Aspect ratio of the chart
             max-width: none;
-            height: 100vw;
-            align-content: center;
-            transform: rotate(90deg);
+            width: auto;
+            height: 60vw;
+            position: sticky;
+            top: 50%;
+            left: 50%;
+            transform: rotate(90deg) translate(-25%, 25%);
+            transform-origin: center;
         }
     }
 }
