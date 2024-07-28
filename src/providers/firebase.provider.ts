@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { first, firstValueFrom } from 'rxjs';
 import { IData } from '../app/interfaces/data.interface';
 import { Router } from '@angular/router';
+import { TimeProvider } from "./time.provider";
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,8 @@ export class FireBaseProvider {
     constructor(
         private fbAuth: AngularFireAuth,
         private fbDb: AngularFireDatabase,
-        private router: Router
+        private router: Router,
+        private timeProvider: TimeProvider
     ) { }
 
     async login(email: string, password: string) {
@@ -31,6 +33,18 @@ export class FireBaseProvider {
         console.log("Adding data...");
         const result = await this.fbDb.list(path).push(data);
         console.log("Added data:", result);
+    }
+
+    async getData(path: string): Promise<any> {
+        return await firstValueFrom(this.fbDb.list<IData>(path, ref =>
+            ref
+        ).valueChanges());
+    }
+
+    async getDataOnDate(path: string, unix1: number, unix2: number) {
+        return await firstValueFrom(this.fbDb.list<IData[]>(path, ref =>
+            ref.orderByChild("timestamp").startAt(unix1).endAt(unix2)
+        ).valueChanges());
     }
 
     async getRecentValue(table: string, email: string): Promise<IData | null> {

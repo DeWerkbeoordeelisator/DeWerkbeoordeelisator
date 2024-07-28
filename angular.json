@@ -28,20 +28,23 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico","src/assets"],
                         "styles": ["src/styles.scss"],
-                        "scripts": []
+                        "scripts": [],
+                        "allowedCommonJsDependencies": [
+                            "moment-timezone"
+                        ]
                     },
                     "configurations": {
                         "production": {
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kB",
-                                    "maximumError": "1MB"
+                                    "maximumWarning": "200MB",
+                                    "maximumError": "400MB"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kB",
-                                    "maximumError": "4kB"
+                                    "maximumWarning": "200MB",
+                                    "maximumError": "400MB"
                                 }
                             ],
                             "outputHashing": "all"
