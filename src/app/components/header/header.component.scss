@@ -1,7 +1,8 @@
 @use "sass-rem" as *;
 :host {
-    .email {
-        display: flex;
+    .header-div {
+        display: grid;
+        grid-template-columns: 0fr 1fr 0fr;
         gap: rem(16px);
         cursor: pointer;
 
@@ -12,25 +13,19 @@
                 width: rem(16px);
             }
         }
+
+        .middle-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .loggin-in-as-text {
         margin-bottom: 4px;
         margin-right: 8px;
-    }
-
-    .right-icon-div {
-        position: absolute;
-        right: 64px;
-    }
-
-
-    .logout-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
