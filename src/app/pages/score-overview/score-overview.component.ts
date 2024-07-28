@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { BaseChartDirective } from 'ng2-charts';
-import { ChartData, ChartOptions } from 'chart.js';
+import { LineChartComponent } from "../../components/line-chart/line-chart.component";
+import { ChartDataset } from 'chart.js';
 
 @Component({
     selector: 'app-score-overview',
     standalone: true,
     imports: [
         HeaderComponent,
-        BaseChartDirective
+        LineChartComponent
     ],
     templateUrl: './score-overview.component.html',
     styleUrl: './score-overview.component.scss'
 })
 export class ScoreOverviewComponent {
-
-    barChartData: ChartData = {
-        datasets: []
-    };
-
-    barChartOptions: ChartOptions = {
-        responsive: true
-    };
+    lineChartData: ChartDataset[] = [
+        {
+            data: [1, 3, 4],
+            label: 'Blijheid'
+        }
+    ];
 }

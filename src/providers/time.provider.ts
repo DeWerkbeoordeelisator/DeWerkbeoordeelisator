@@ -11,6 +11,10 @@ export class TimeProvider {
         [1400, 1700]
     ];
 
+    get timeSlots(): string[] {
+        return this.TIMESLOTS.map(([start, end]) => `${start.toString().padStart(4, '0')} - ${end.toString().padStart(4, '0')}`);
+    }
+
     /**
      * Calculates the next available time based on the current time and predefined timeslots.
      */
