@@ -2,15 +2,15 @@
 :host {
     .header-div {
         display: grid;
-        grid-template-columns: 0fr 1fr 0fr;
-        gap: rem(16px);
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: rem(24px);
         cursor: pointer;
 
         .svg {
             height: 100%;
 
             svg {
-                width: rem(16px);
+                width: rem(24px);
             }
         }
 
