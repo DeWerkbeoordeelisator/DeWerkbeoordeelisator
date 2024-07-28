@@ -74,6 +74,8 @@ export class FillScoreComponent implements OnInit {
             this.confettiProvider.shoot();
 
             this.submitted = true;
+
+            await this.checkValues();
         } catch (error) {
             console.error(error);
             this.submitFailed = true;
