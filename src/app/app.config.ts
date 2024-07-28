@@ -6,11 +6,11 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { HttpClientModule } from '@angular/common/http';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-// import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        // {provide: LocationStrategy, useClass: HashLocationStrategy},
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
         importProvidersFrom(
