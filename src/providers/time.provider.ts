@@ -6,7 +6,7 @@ import moment from "moment-timezone";
 })
 export class TimeProvider {
     private readonly TIMESLOTS: [number, number][] = [
-        [800, 1100],
+        [100, 1100],
         [1100, 1400],
         [1400, 2300] // TODO: Set back to 1700
     ];
