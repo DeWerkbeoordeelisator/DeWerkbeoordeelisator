@@ -24,6 +24,7 @@
         "canvas-confetti": "1.9.3",
         "firebase": "10.12.3",
         "moment": "2.30.1",
+        "moment-timezone": "^0.5.45",
         "ngx-device-detector": "8.0.0",
         "rxjs": "7.8.0",
         "sass-rem": "4.0.0",
