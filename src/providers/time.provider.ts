@@ -6,9 +6,9 @@ import moment from "moment-timezone";
 })
 export class TimeProvider {
     private readonly TIMESLOTS: [number, number][] = [
-        [100, 1100],
-        [1100, 1400],
-        [1400, 2300] // TODO: Set back to 1700
+        [600, 1000],
+        [1000, 1500],
+        [1500, 2000] // TODO: Set back to 1700
     ];
 
     get timeSlots(): string[] {

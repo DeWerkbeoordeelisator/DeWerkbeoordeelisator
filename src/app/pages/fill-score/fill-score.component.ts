@@ -25,6 +25,9 @@ import { ETable } from '../../enums/fbpath.enum';
 export class FillScoreComponent implements OnInit {
     acidity: number = 0;
     feeling: number = 0;
+    wantToBeAtWork: number = 0;
+    toDoWork: number = 0;
+    expectation: number = 0;
 
     loading: string = '';
     submitFailed: boolean = false;
@@ -66,6 +69,9 @@ export class FillScoreComponent implements OnInit {
             const data = {
                 acidity: this.acidity,
                 feeling: this.feeling,
+                wantToBeAtWork: this.wantToBeAtWork,
+                toDoWork: this.toDoWork,
+                expectation: this.expectation,
                 timestamp: new Date().getTime(),
                 email: this.email
             }
